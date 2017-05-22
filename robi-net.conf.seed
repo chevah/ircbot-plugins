@@ -1,0 +1,98 @@
+#
+# Supybot is strange and it will always rewrite the configuration file
+# at exit. We keep a separate copy to reduce the noise.
+#
+supybot.nick: test-robi-net
+supybot.networks.freenode.channels: #chevah-test
+
+supybot.ident: chevah-test
+
+supybot.protocols.ssl.verifyCertificates: true
+supybot.networks: freenode
+#supybot.networks.freenode.password: pass-not-used
+supybot.networks.freenode.servers: irc.freenode.net:7000
+
+supybot.networks.freenode.channels.key:
+supybot.networks.freenode.ssl: True
+
+supybot.reply.format.time: %I:%M %p, %B %d, %Y
+supybot.reply.format.time.elapsed.short: True
+
+supybot.reply.whenAddressedBy.chars: @!
+supybot.reply.whenAddressedBy.strings:
+supybot.reply.whenAddressedBy.nick: True
+supybot.reply.whenAddressedBy.nick.atEnd: False
+supybot.reply.whenAddressedBy.nicks:
+
+supybot.reply.error.withNotice: True
+supybot.reply.error.noCapability: True
+supybot.reply.error.detailed: True
+supybot.reply.error.inPrivate: True
+supybot.reply.inPrivate: False
+supybot.reply.withNotice: True
+supybot.reply.whenNotCommand: True
+supybot.reply.withNoticeWhenPrivate: False
+supybot.reply.withNickPrefix: True
+
+supybot.pidFile: build/run/run.pid
+supybot.directories.conf: build/run/conf
+supybot.directories.data: build/run/data
+supybot.directories.data.tmp: build/run/data/tmp
+supybot.directories.backup: /dev/null
+supybot.directories.log: build/run/logs
+supybot.directories.plugins: limnoria-plugins
+
+supybot.plugins: Config, SupportNotifications
+
+supybot.plugins.Config: True
+supybot.plugins.Config.public: True
+
+supybot.plugins.SupportNotifications: True
+supybot.plugins.SupportNotifications.public: True
+supybot.plugins.SupportNotifications.pollInterval: 5
+# Check any mails sent to/cc support@proatria.com
+supybot.plugins.SupportNotifications.targetAddress: support@proatria.com
+# Any mail from @proatria.com is considered as part of the team and will
+# produce a notification.
+supybot.plugins.SupportNotifications.teamDomain: proatria.com
+supybot.plugins.SupportNotifications.credentialsPath: build/run/credentials.json
+
+supybot.plugins.Misc: True
+supybot.plugins.Misc.public: True
+supybot.plugins.Misc.listPrivatePlugins: True
+supybot.plugins.Misc.timestampFormat: [%H:%M:%S]
+supybot.plugins.Misc.last.nested.includeTimestamp: False
+supybot.plugins.Misc.last.nested.includeNick: False
+
+
+# Default value: anydbm cdb flat pickle
+supybot.databases: flat
+
+supybot.databases.users.filename: users.conf
+supybot.databases.users.allowUnregistration: False
+supybot.databases.ignores.filename: ignores.conf
+supybot.databases.channels.filename: channels.conf
+
+###
+# Determines what user modes the bot will request from the server when
+# it first connects. Many people might choose +i; some networks allow
+# +x, which indicates to the auth services on those networks that you
+# should be given a fake host.
+#
+# Default value: 
+###
+supybot.protocols.irc.umodes: 
+supybot.protocols.irc.vhost: 
+
+supybot.protocols.irc.maxHistoryLength: 1000
+supybot.externalIP: 
+supybot.defaultSocketTimeout: 10
+
+supybot.debug.threadAllCommands: False
+supybot.debug.flushVeryOften: False
+
+supybot.log.level: INFO
+supybot.log.timestampFormat: %Y-%m-%dT%H:%M:%S
+supybot.log.stdout: True
+supybot.log.stdout.level: INFO
+supybot.log.plugins.individualLogfiles: True

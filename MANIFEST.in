@@ -1,0 +1,4 @@
+graft chevah
+graft limnoria-plugins
+recursive-exclude chevah *.pyc
+recursive-exclude limnoria-plugins *.pyc

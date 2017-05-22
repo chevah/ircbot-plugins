@@ -1,0 +1,31 @@
+Development
+-----------
+
+If starting with a clean repo, install virtualenv and dev requirements::
+
+    make deps
+
+Virtual environment is created in `build/` folder.::
+
+    . build/bin/activate
+
+Run tests::
+    make test
+    or
+    nosetests
+
+
+Manual testing
+--------------
+
+Do all the tests in #chevah-test to not add noise to the main channel.
+
+First you need to get the credentials, by placing the `client_id.json` in repo
+root and then run.
+
+    make irc-bot-oauth
+
+You only need to get the credentials once.
+After that you can launch the IRC bot::
+
+    make irc-bot
