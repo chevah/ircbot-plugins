@@ -29,18 +29,22 @@ class CancellableTimer(Thread):
     """
     A threaded timer which can be closed before the scheduled execution.
     """
-    def __init__(self, delay, callback, *args, **kwargs):
+    def __init__(self, delay, callback, irc, *args, **kwargs):
         Thread.__init__(self)
         self._event = Event()
         self._step = 0.25
         self._remaining = delay / self._step
-
+        self._irc = irc
         self._callback = callback
         self._args = args
         self._kwargs = kwargs
 
     def run(self):
-        while self._remaining > 0 and not self._event.is_set():
+        while (
+            self._remaining > 0 and
+            not self._event.is_set()
+            and not self._irc.zombie
+                ):
             self._remaining -= self._step
             self._event.wait(self._step)
         self._callback(*self._args, **self._kwargs)
@@ -132,7 +136,7 @@ class SupportNotifications(Plugin):
         if self._timer:
             return
 
-        self._timer = CancellableTimer(self._interval, self._tick)
+        self._timer = CancellableTimer(self._interval, self._tick, self._irc)
         self._timer.start()
         self.log.debug('Scheduling a new check.')
 

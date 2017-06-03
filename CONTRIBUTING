@@ -28,4 +28,4 @@ root and then run.
 You only need to get the credentials once.
 After that you can launch the IRC bot::
 
-    make irc-bot
+    make run
