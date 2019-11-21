@@ -45,7 +45,7 @@ distribution = setup(
     namespace_packages=['chevah'],
     packages=find_packages('.'),
     install_requires=[
-        'limnoria==2017.03.30',
+        'limnoria==2019.11.09',
         'google-api-python-client',
         ],
     extras_require = {
